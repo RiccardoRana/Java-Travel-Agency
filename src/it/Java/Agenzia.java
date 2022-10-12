@@ -8,7 +8,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 
 
-
 public class Agenzia {
     public static void main(String[] args) throws Exception {
         Scanner in = new Scanner(System.in);
@@ -21,11 +20,9 @@ public class Agenzia {
         String destinazione;
 
 
-
-
-
         System.out.println("Ciao siamo la tua travel agency, per che destinazione vuoi prenotare la tua vacanza?");
         destinazione = in.nextLine();
+        System.out.println(destinazione);
         System.out.println("Benissimo, per che giorno avevi intenzione di partire?");
         inizioGiorno = in.nextInt();
         System.out.println("Di quale mese?");
@@ -44,22 +41,19 @@ public class Agenzia {
         dataFine = LocalDate.of(fineAnno, fineMese, fineGiorno);
         System.out.println(dataFine);
 
-        if (dataInizio.isAfter(dataFine))
-            System.out.println("La data d'inizio non può essere dopo quella della fine!");
-        else {
 
-            try {
-                Vacanza vacanza = new Vacanza(destinazione, dataInizio, dataFine);
-                System.out.println("Hai prenotato la tua vacanza!");
-                System.out.println("Data inizio:" + dataInizio.format(df)); //11/10/2022!!!
-                System.out.println("Data fine:" + dataFine.format(df));
-                System.out.println("Durata:" + vacanza.durataVacanza(dataInizio, dataFine));
+        try {
+            Vacanza vacanza = new Vacanza(destinazione, dataInizio, dataFine);
+            System.out.println("Hai prenotato la tua vacanza!");
+            System.out.println("Destinazione:"+vacanza.getDestinazione());
+            System.out.println("Data inizio:" + dataInizio.format(df)); //11/10/2022!!!
+            System.out.println("Data fine:" + dataFine.format(df));
+            System.out.println("Durata:" + vacanza.durataVacanza(dataInizio, dataFine));
 
 
-            } catch (Exception e) {
-                System.out.println("Non valido");
-            }
-            in.close();
+        } catch (Exception e) {
+            System.out.println("Non valido");
         }
+        in.close();
     }
 }
