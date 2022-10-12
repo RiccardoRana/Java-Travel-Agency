@@ -16,7 +16,7 @@ public class Vacanza {
 
         this.destinazione = destinazione;
 
-        if (this.dataInizio.isBefore(now)) {
+        if (dataInizio.isAfter(now)) {
             this.dataInizio = dataInizio;
         } else {
             throw new Exception("Data non valida");
@@ -27,7 +27,7 @@ public class Vacanza {
     }
 
 
-    public static long durataVacanza(LocalDate dataInizio, LocalDate dataFine) {
+    public  long durataVacanza(LocalDate dataInizio, LocalDate dataFine) {
         return ChronoUnit.DAYS.between(dataInizio, dataFine);
     }
 }
